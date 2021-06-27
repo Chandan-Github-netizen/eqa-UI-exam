@@ -1,4 +1,6 @@
 import * as dotenv from "dotenv";
+import { GridPage } from "../pages/gridPage";
+import { expect, assert } from "chai";
 dotenv.config();
 
 export class Page {
@@ -14,4 +16,13 @@ export class Page {
       timeoutMsg: "Element not Displayed",
     });
   }
+
+  public static filterNames(name: String){
+    GridPage.namesTextbox.setValue(name);
+    GridPage.names.forEach((el) => {
+        expect(el.isDisplayed()).to.eql(true);
+    });
+  }
+  
+
 }
